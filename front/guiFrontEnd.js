@@ -1,10 +1,10 @@
 //________________GLOBAL VARIABLES and FUNCTIONS__________________________________________
 var updateInterval = 1000; //time taken for each update
- 
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
- 
+
 var speedValue;
 var batteryValue;
 //________________________________________________________________________________________
@@ -47,7 +47,7 @@ function imuMove(counter) {
     else
     	document.getElementById("Ball").style.WebkitTransform = "translate(" + (transRadius*Math.cos(transDeg))/(RUNTIME/2)*((RUNTIME/2)-counter%(RUNTIME/2)) + "px, "+ (transRadius*Math.sin(transDeg))/(RUNTIME/2)*((RUNTIME/2)-counter%(RUNTIME/2)) +"px)";
 }
-    
+
 setInterval(function() {
 	imuMove(counter++)
 }, RUNTIME/10);
@@ -76,7 +76,7 @@ window.onload = function() {
     var dps3 = []; // data variable 3
     var dps4 = []; // data variable 4
     var dps5 = []; // data variable 5
-    
+
     //Creating the multi part chart
     var chart = new CanvasJS.Chart("chartContainer", {
         backgroundColor: '',
@@ -133,6 +133,7 @@ window.onload = function() {
             name: "Measurement E",
         }]
     });
+
         //function that toggles the visible lines
     function toggleDataSeries(e) {
         if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
@@ -159,7 +160,7 @@ window.onload = function() {
             yVal5 = yVal5 + Math.round(5 + Math.random() * (-5 - 5));
             speed.push({
                 x: xVal,
-                y: speedValue 
+                y: speedValue
             });
             battery.push({
                 x: xVal,
@@ -181,7 +182,7 @@ window.onload = function() {
         }
         if (currentLength < dataLength)
         {
-             currentLength = currentLength + 1;   
+             currentLength = currentLength + 1;
         }
         else {
             speed.shift();
@@ -193,7 +194,7 @@ window.onload = function() {
         chart.render();
     };
 
-    
+
     //creating the chart for battery voltage
     var chart2 = new CanvasJS.Chart("voltageChart", {
         backgroundColor: '',
@@ -211,82 +212,82 @@ window.onload = function() {
         axisX: {
             labelFontColor: "black"
         },
-        data: [{ 
-            type: "column", 
+        data: [{
+            type: "column",
             dataPoints: [
-                {y: 30,label: "1"}, 
-                {y: 29,label: "2"}, 
-                { y: 25, label: "3" }, 
-                { y: 32, label: "4" }, 
-                { y: 30, label: "5" }, 
-                { y: 12, label: "6" }, 
-                { y: 15, label: "7" }, 
-                { y: 17, label: "8" }, 
-                { y: 19, label: "9" }, 
-                { y: 22, label: "10" }, 
-                { y: 25, label: "11" }, 
-                { y: 24, label: "12" }, 
-                { y: 2, label: "13" }, 
-                { y: 40, label: "14" }, 
-                { y: 35, label: "15" }, 
-                { y: 12, label: "16" }, 
-                { y: 30, label: "17" }, 
-                { y: 23, label: "18" }, 
-                { y: 25, label: "19" }, 
-                { y: 15, label: "20" }, 
-                { y: 40, label: "21" }, 
-                { y: 35, label: "22" }, 
-                { y: 16, label: "23" }, 
-                { y: 32, label: "24" }, 
-                { y: 20, label: "25" }, 
-                { y: 27, label: "26" }, 
-                { y: 20, label: "27" }, 
-                { y: 35, label: "28" }, 
-                { y: 23, label: "29" }, 
-                { y: 12, label: "30" }, 
-                { y: 30, label: "31" }, 
-                { y: 29, label: "32" }, 
-                { y: 25, label: "33" }, 
-                { y: 32, label: "34" }, 
-                { y: 30, label: "35" }, 
-                { y: 12, label: "36" }, 
-                { y: 15, label: "37" }, 
-                { y: 17, label: "38" }, 
-                { y: 19, label: "39" }, 
-                { y: 22, label: "40" }, 
-                { y: 25, label: "41" }, 
-                { y: 24, label: "42" }, 
-                { y: 2, label: "43" }, 
-                { y: 40, label: "44" }, 
-                { y: 35, label: "45" }, 
-                { y: 12, label: "46" }, 
-                { y: 30, label: "47" }, 
-                { y: 23, label: "48" }, 
-                { y: 25, label: "49" }, 
-                { y: 15, label: "50" }, 
-                { y: 40, label: "51" }, 
-                { y: 35, label: "52" }, 
-                { y: 16, label: "53" }, 
-                { y: 32, label: "54" }, 
-                { y: 20, label: "55" }, 
-                { y: 27, label: "56" }, 
-                { y: 20, label: "57" }, 
-                { y: 35, label: "58" }, 
-                { y: 23, label: "59" }, 
-                { y: 12, label: "60" }, 
-                { y: 40, label: "61" }, 
-                { y: 35, label: "62" }, 
-                { y: 16, label: "63" }, 
-                { y: 32, label: "64" }, 
-                { y: 20, label: "65" }, 
-                { y: 27, label: "66" }, 
-                { y: 20, label: "67" }, 
-                { y: 35, label: "68" }, 
-                { y: 23, label: "69" }, 
-                { y: 12, label: "70" }, 
-                { y: 20, label: "71" }, 
-                { y: 27, label: "72" }] 
-        }] 
+                {y: 30,label: "1"},
+                {y: 29,label: "2"},
+                { y: 25, label: "3" },
+                { y: 32, label: "4" },
+                { y: 30, label: "5" },
+                { y: 12, label: "6" },
+                { y: 15, label: "7" },
+                { y: 17, label: "8" },
+                { y: 19, label: "9" },
+                { y: 22, label: "10" },
+                { y: 25, label: "11" },
+                { y: 24, label: "12" },
+                { y: 2, label: "13" },
+                { y: 40, label: "14" },
+                { y: 35, label: "15" },
+                { y: 12, label: "16" },
+                { y: 30, label: "17" },
+                { y: 23, label: "18" },
+                { y: 25, label: "19" },
+                { y: 15, label: "20" },
+                { y: 40, label: "21" },
+                { y: 35, label: "22" },
+                { y: 16, label: "23" },
+                { y: 32, label: "24" },
+                { y: 20, label: "25" },
+                { y: 27, label: "26" },
+                { y: 20, label: "27" },
+                { y: 35, label: "28" },
+                { y: 23, label: "29" },
+                { y: 12, label: "30" },
+                { y: 30, label: "31" },
+                { y: 29, label: "32" },
+                { y: 25, label: "33" },
+                { y: 32, label: "34" },
+                { y: 30, label: "35" },
+                { y: 12, label: "36" },
+                { y: 15, label: "37" },
+                { y: 17, label: "38" },
+                { y: 19, label: "39" },
+                { y: 22, label: "40" },
+                { y: 25, label: "41" },
+                { y: 24, label: "42" },
+                { y: 2, label: "43" },
+                { y: 40, label: "44" },
+                { y: 35, label: "45" },
+                { y: 12, label: "46" },
+                { y: 30, label: "47" },
+                { y: 23, label: "48" },
+                { y: 25, label: "49" },
+                { y: 15, label: "50" },
+                { y: 40, label: "51" },
+                { y: 35, label: "52" },
+                { y: 16, label: "53" },
+                { y: 32, label: "54" },
+                { y: 20, label: "55" },
+                { y: 27, label: "56" },
+                { y: 20, label: "57" },
+                { y: 35, label: "58" },
+                { y: 23, label: "59" },
+                { y: 12, label: "60" },
+                { y: 40, label: "61" },
+                { y: 35, label: "62" },
+                { y: 16, label: "63" },
+                { y: 32, label: "64" },
+                { y: 20, label: "65" },
+                { y: 27, label: "66" },
+                { y: 20, label: "67" },
+                { y: 35, label: "68" },
+                { y: 23, label: "69" },
+                { y: 12, label: "70" },
+                { y: 20, label: "71" },
+                { y: 27, label: "72" }]
+        }]
     });
     chart2.render();
 
@@ -300,9 +301,9 @@ window.onload = function() {
 
         chart2.render();
     }
-    
-    
-    
+
+
+
     //__________BATTERY POWER GRAPH_______________________________________________________
     var batteryChart = new CanvasJS.Chart("batteryFill", {
         backgroundColor: '',
@@ -326,7 +327,7 @@ window.onload = function() {
         }]
     });
     batteryChart.render();
-    
+
     var updatebatteryChart = function() {
         batteryChart.options.data[0].dataPoints[0] = {
             y: batteryValue,
@@ -339,7 +340,7 @@ window.onload = function() {
 
 
 
-    
+
     //____________ERRORS AND RAW DATA GENERATION__________________________________________
     var rawData = function(count) {
         //document.getElementById("raw").innerHTML = document.getElementById("raw").innerHTML + Math.random();
@@ -378,10 +379,10 @@ window.onload = function() {
         document.getElementById(section).innerHTML += text;
     }
     //____________________________________________________________________________________
- 
-    
-    
-    
+
+
+
+
     //_______________________________HEATMAP SCRIPTS______________________________________
     var xValues = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U'];
     var yValues = ['O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'];
@@ -402,7 +403,7 @@ window.onload = function() {
       [0.00, 0.00, 0.00, 0.75, 0.00,0.00, 0.00, 0.75, 0.75, 0.00,0.00, 0.00, 0.75, 0.00, 0.75, 0.00,0.00, 0.00, 0.75, 0.00, 0.75],
       [0.00, 0.00, 0.00, 0.75, 0.00,0.00, 0.00, 0.75, 0.75, 0.00,0.00, 0.00, 0.75, 0.10, 0.75, 0.00,0.00, 0.00, 0.75, 0.00, 0.75]
     ];
-    
+
     function colorPerc(perc) {
         var r = 255, g = 43, b = g;
         var stopper = r-g;
@@ -428,7 +429,7 @@ window.onload = function() {
       [.9, colorPerc(10)],
       [1, colorPerc(0)]
     ];
-    
+
 
     var data = [{
       x: xValues,
@@ -448,7 +449,7 @@ window.onload = function() {
         t: 25,
         pad: 0
       },
-        
+
       xaxis: {
         ticks: '',
         side: 'top'
@@ -462,7 +463,7 @@ window.onload = function() {
       }
     };
 
-    for ( var i = 0; i < yValues.length; i++ ) 
+    for ( var i = 0; i < yValues.length; i++ )
     {
       for ( var j = 0; j < xValues.length; j++ ) {
             var currentValue = zValues[i][j];
@@ -497,10 +498,10 @@ window.onload = function() {
     Plotly.newPlot('heatMap', data, layout);
     //____________________________________________________________________________________
 
-    
-    
-    
-    
+
+
+
+
     //_________UPDATING NUMBERS FOR EVERYTHING____________________________________________
     updateChart(currentLength);
 
@@ -516,7 +517,7 @@ window.onload = function() {
     }, updateInterval);
     //____________________________________________________________________________________
 
-    
-    
+
+
 }
 //________________________________________________________________________________________
