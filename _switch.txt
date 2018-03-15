@@ -1,4 +1,5 @@
 //switch case for the can messages
+// there are 153 entries in hash map
 public void translate(HashMap hm, long value, int id){
 	switch (id) {
 		int shift = 0;
