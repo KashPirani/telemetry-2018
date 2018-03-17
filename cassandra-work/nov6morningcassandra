@@ -1,0 +1,506 @@
+Last login: Mon Nov  6 03:18:38 on ttys000
+v1020-wn-172-167:~ austinjiang$ cassandra -f
+Java HotSpot(TM) 64-Bit Server VM warning: Cannot open file /usr/local/Cellar/cassandra/3.11.1/libexec/logs/gc.log due to No such file or directory
+
+objc[49144]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/bin/java (0x109ef94c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x109fc24e0). One of the two will be used. Which one is undefined.
+CompilerOracle: dontinline org/apache/cassandra/db/Columns$Serializer.deserializeLargeSubset (Lorg/apache/cassandra/io/util/DataInputPlus;Lorg/apache/cassandra/db/Columns;I)Lorg/apache/cassandra/db/Columns;
+CompilerOracle: dontinline org/apache/cassandra/db/Columns$Serializer.serializeLargeSubset (Ljava/util/Collection;ILorg/apache/cassandra/db/Columns;ILorg/apache/cassandra/io/util/DataOutputPlus;)V
+CompilerOracle: dontinline org/apache/cassandra/db/Columns$Serializer.serializeLargeSubsetSize (Ljava/util/Collection;ILorg/apache/cassandra/db/Columns;I)I
+CompilerOracle: dontinline org/apache/cassandra/db/commitlog/AbstractCommitLogSegmentManager.advanceAllocatingFrom (Lorg/apache/cassandra/db/commitlog/CommitLogSegment;)V
+CompilerOracle: dontinline org/apache/cassandra/db/transform/BaseIterator.tryGetMoreContents ()Z
+CompilerOracle: dontinline org/apache/cassandra/db/transform/StoppingTransformation.stop ()V
+CompilerOracle: dontinline org/apache/cassandra/db/transform/StoppingTransformation.stopInPartition ()V
+CompilerOracle: dontinline org/apache/cassandra/io/util/BufferedDataOutputStreamPlus.doFlush (I)V
+CompilerOracle: dontinline org/apache/cassandra/io/util/BufferedDataOutputStreamPlus.writeExcessSlow ()V
+CompilerOracle: dontinline org/apache/cassandra/io/util/BufferedDataOutputStreamPlus.writeSlow (JI)V
+CompilerOracle: dontinline org/apache/cassandra/io/util/RebufferingInputStream.readPrimitiveSlowly (I)J
+CompilerOracle: inline org/apache/cassandra/db/rows/UnfilteredSerializer.serializeRowBody (Lorg/apache/cassandra/db/rows/Row;ILorg/apache/cassandra/db/SerializationHeader;Lorg/apache/cassandra/io/util/DataOutputPlus;)V
+CompilerOracle: inline org/apache/cassandra/io/util/Memory.checkBounds (JJ)V
+CompilerOracle: inline org/apache/cassandra/io/util/SafeMemory.checkBounds (JJ)V
+CompilerOracle: inline org/apache/cassandra/utils/AsymmetricOrdering.selectBoundary (Lorg/apache/cassandra/utils/AsymmetricOrdering/Op;II)I
+CompilerOracle: inline org/apache/cassandra/utils/AsymmetricOrdering.strictnessOfLessThan (Lorg/apache/cassandra/utils/AsymmetricOrdering/Op;)I
+CompilerOracle: inline org/apache/cassandra/utils/BloomFilter.indexes (Lorg/apache/cassandra/utils/IFilter/FilterKey;)[J
+CompilerOracle: inline org/apache/cassandra/utils/BloomFilter.setIndexes (JJIJ[J)V
+CompilerOracle: inline org/apache/cassandra/utils/ByteBufferUtil.compare (Ljava/nio/ByteBuffer;[B)I
+CompilerOracle: inline org/apache/cassandra/utils/ByteBufferUtil.compare ([BLjava/nio/ByteBuffer;)I
+CompilerOracle: inline org/apache/cassandra/utils/ByteBufferUtil.compareUnsigned (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+CompilerOracle: inline org/apache/cassandra/utils/FastByteOperations$UnsafeOperations.compareTo (Ljava/lang/Object;JILjava/lang/Object;JI)I
+CompilerOracle: inline org/apache/cassandra/utils/FastByteOperations$UnsafeOperations.compareTo (Ljava/lang/Object;JILjava/nio/ByteBuffer;)I
+CompilerOracle: inline org/apache/cassandra/utils/FastByteOperations$UnsafeOperations.compareTo (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+CompilerOracle: inline org/apache/cassandra/utils/vint/VIntCoding.encodeVInt (JI)[B
+INFO  [main] 2017-11-06 12:48:07,767 YamlConfigurationLoader.java:89 - Configuration location: file:/usr/local/etc/cassandra/cassandra.yaml
+INFO  [main] 2017-11-06 12:48:08,218 Config.java:481 - Node configuration:[allocate_tokens_for_keyspace=null; authenticator=AllowAllAuthenticator; authorizer=AllowAllAuthorizer; auto_bootstrap=true; auto_snapshot=true; back_pressure_enabled=false; back_pressure_strategy=org.apache.cassandra.net.RateBasedBackPressure{high_ratio=0.9, factor=5, flow=FAST}; batch_size_fail_threshold_in_kb=50; batch_size_warn_threshold_in_kb=5; batchlog_replay_throttle_in_kb=1024; broadcast_address=null; broadcast_rpc_address=null; buffer_pool_use_heap_if_exhausted=true; cas_contention_timeout_in_ms=1000; cdc_enabled=false; cdc_free_space_check_interval_ms=250; cdc_raw_directory=null; cdc_total_space_in_mb=0; client_encryption_options=<REDACTED>; cluster_name=Test Cluster; column_index_cache_size_in_kb=2; column_index_size_in_kb=64; commit_failure_policy=stop; commitlog_compression=null; commitlog_directory=null; commitlog_max_compression_buffers_in_pool=3; commitlog_periodic_queue_size=-1; commitlog_segment_size_in_mb=32; commitlog_sync=periodic; commitlog_sync_batch_window_in_ms=NaN; commitlog_sync_period_in_ms=10000; commitlog_total_space_in_mb=null; compaction_large_partition_warning_threshold_mb=100; compaction_throughput_mb_per_sec=16; concurrent_compactors=null; concurrent_counter_writes=32; concurrent_materialized_view_writes=32; concurrent_reads=32; concurrent_replicates=null; concurrent_writes=32; counter_cache_keys_to_save=2147483647; counter_cache_save_period=7200; counter_cache_size_in_mb=null; counter_write_request_timeout_in_ms=5000; credentials_cache_max_entries=1000; credentials_update_interval_in_ms=-1; credentials_validity_in_ms=2000; cross_node_timeout=false; data_file_directories=[Ljava.lang.String;@7995092a; disk_access_mode=auto; disk_failure_policy=stop; disk_optimization_estimate_percentile=0.95; disk_optimization_page_cross_chance=0.1; disk_optimization_strategy=ssd; dynamic_snitch=true; dynamic_snitch_badness_threshold=0.1; dynamic_snitch_reset_interval_in_ms=600000; dynamic_snitch_update_interval_in_ms=100; enable_scripted_user_defined_functions=false; enable_user_defined_functions=false; enable_user_defined_functions_threads=true; encryption_options=null; endpoint_snitch=SimpleSnitch; file_cache_size_in_mb=null; gc_log_threshold_in_ms=200; gc_warn_threshold_in_ms=1000; hinted_handoff_disabled_datacenters=[]; hinted_handoff_enabled=true; hinted_handoff_throttle_in_kb=1024; hints_compression=null; hints_directory=null; hints_flush_period_in_ms=10000; incremental_backups=false; index_interval=null; index_summary_capacity_in_mb=null; index_summary_resize_interval_in_minutes=60; initial_token=null; inter_dc_stream_throughput_outbound_megabits_per_sec=200; inter_dc_tcp_nodelay=false; internode_authenticator=null; internode_compression=dc; internode_recv_buff_size_in_bytes=0; internode_send_buff_size_in_bytes=0; key_cache_keys_to_save=2147483647; key_cache_save_period=14400; key_cache_size_in_mb=null; listen_address=localhost; listen_interface=null; listen_interface_prefer_ipv6=false; listen_on_broadcast_address=false; max_hint_window_in_ms=10800000; max_hints_delivery_threads=2; max_hints_file_size_in_mb=128; max_mutation_size_in_kb=null; max_streaming_retries=3; max_value_size_in_mb=256; memtable_allocation_type=heap_buffers; memtable_cleanup_threshold=null; memtable_flush_writers=0; memtable_heap_space_in_mb=null; memtable_offheap_space_in_mb=null; min_free_space_per_drive_in_mb=50; native_transport_max_concurrent_connections=-1; native_transport_max_concurrent_connections_per_ip=-1; native_transport_max_frame_size_in_mb=256; native_transport_max_threads=128; native_transport_port=9042; native_transport_port_ssl=null; num_tokens=256; otc_backlog_expiration_interval_ms=200; otc_coalescing_enough_coalesced_messages=8; otc_coalescing_strategy=DISABLED; otc_coalescing_window_us=200; partitioner=org.apache.cassandra.dht.Murmur3Partitioner; permissions_cache_max_entries=1000; permissions_update_interval_in_ms=-1; permissions_validity_in_ms=2000; phi_convict_threshold=8.0; prepared_statements_cache_size_mb=null; range_request_timeout_in_ms=10000; read_request_timeout_in_ms=5000; request_scheduler=org.apache.cassandra.scheduler.NoScheduler; request_scheduler_id=null; request_scheduler_options=null; request_timeout_in_ms=10000; role_manager=CassandraRoleManager; roles_cache_max_entries=1000; roles_update_interval_in_ms=-1; roles_validity_in_ms=2000; row_cache_class_name=org.apache.cassandra.cache.OHCProvider; row_cache_keys_to_save=2147483647; row_cache_save_period=0; row_cache_size_in_mb=0; rpc_address=localhost; rpc_interface=null; rpc_interface_prefer_ipv6=false; rpc_keepalive=true; rpc_listen_backlog=50; rpc_max_threads=2147483647; rpc_min_threads=16; rpc_port=9160; rpc_recv_buff_size_in_bytes=null; rpc_send_buff_size_in_bytes=null; rpc_server_type=sync; saved_caches_directory=null; seed_provider=org.apache.cassandra.locator.SimpleSeedProvider{seeds=127.0.0.1}; server_encryption_options=<REDACTED>; slow_query_log_timeout_in_ms=500; snapshot_before_compaction=false; ssl_storage_port=7001; sstable_preemptive_open_interval_in_mb=50; start_native_transport=true; start_rpc=false; storage_port=7000; stream_throughput_outbound_megabits_per_sec=200; streaming_keep_alive_period_in_secs=300; streaming_socket_timeout_in_ms=86400000; thrift_framed_transport_size_in_mb=15; thrift_max_message_length_in_mb=16; thrift_prepared_statements_cache_size_mb=null; tombstone_failure_threshold=100000; tombstone_warn_threshold=1000; tracetype_query_ttl=86400; tracetype_repair_ttl=604800; transparent_data_encryption_options=org.apache.cassandra.config.TransparentDataEncryptionOptions@7fc2413d; trickle_fsync=false; trickle_fsync_interval_in_kb=10240; truncate_request_timeout_in_ms=60000; unlogged_batch_across_partitions_warn_threshold=10; user_defined_function_fail_timeout=1500; user_defined_function_warn_timeout=500; user_function_timeout_policy=die; windows_timer_interval=1; write_request_timeout_in_ms=2000]
+INFO  [main] 2017-11-06 12:48:08,219 DatabaseDescriptor.java:367 - DiskAccessMode 'auto' determined to be mmap, indexAccessMode is mmap
+INFO  [main] 2017-11-06 12:48:08,220 DatabaseDescriptor.java:421 - Global memtable on-heap threshold is enabled at 1014MB
+INFO  [main] 2017-11-06 12:48:08,220 DatabaseDescriptor.java:425 - Global memtable off-heap threshold is enabled at 1014MB
+INFO  [main] 2017-11-06 12:48:08,454 RateBasedBackPressure.java:123 - Initialized back-pressure with high ratio: 0.9, factor: 5, flow: FAST, window size: 2000.
+INFO  [main] 2017-11-06 12:48:08,455 DatabaseDescriptor.java:725 - Back-pressure is disabled with strategy org.apache.cassandra.net.RateBasedBackPressure{high_ratio=0.9, factor=5, flow=FAST}.
+ERROR [main] 2017-11-06 12:48:08,637 CassandraDaemon.java:706 - Port already in use: 7199; nested exception is: 
+	java.net.BindException: Address already in use (Bind failed)
+java.net.BindException: Address already in use (Bind failed)
+	at java.net.PlainSocketImpl.socketBind(Native Method) ~[na:1.8.0_144]
+	at java.net.AbstractPlainSocketImpl.bind(AbstractPlainSocketImpl.java:387) ~[na:1.8.0_144]
+	at java.net.ServerSocket.bind(ServerSocket.java:375) ~[na:1.8.0_144]
+	at java.net.ServerSocket.<init>(ServerSocket.java:237) ~[na:1.8.0_144]
+	at java.net.ServerSocket.<init>(ServerSocket.java:128) ~[na:1.8.0_144]
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createServerSocket(RMIDirectSocketFactory.java:45) ~[na:1.8.0_144]
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createServerSocket(RMIMasterSocketFactory.java:345) ~[na:1.8.0_144]
+	at sun.rmi.transport.tcp.TCPEndpoint.newServerSocket(TCPEndpoint.java:666) ~[na:1.8.0_144]
+	at sun.rmi.transport.tcp.TCPTransport.listen(TCPTransport.java:330) ~[na:1.8.0_144]
+	at sun.rmi.transport.tcp.TCPTransport.exportObject(TCPTransport.java:249) ~[na:1.8.0_144]
+	at sun.rmi.transport.tcp.TCPEndpoint.exportObject(TCPEndpoint.java:411) ~[na:1.8.0_144]
+	at sun.rmi.transport.LiveRef.exportObject(LiveRef.java:147) ~[na:1.8.0_144]
+	at sun.rmi.server.UnicastServerRef.exportObject(UnicastServerRef.java:236) ~[na:1.8.0_144]
+	at sun.rmi.registry.RegistryImpl.setup(RegistryImpl.java:213) ~[na:1.8.0_144]
+	at sun.rmi.registry.RegistryImpl.<init>(RegistryImpl.java:198) ~[na:1.8.0_144]
+	at org.apache.cassandra.utils.JMXServerUtils$Registry.<init>(JMXServerUtils.java:347) ~[apache-cassandra-3.11.1.jar:3.11.1]
+	at org.apache.cassandra.utils.JMXServerUtils$Registry.<init>(JMXServerUtils.java:340) ~[apache-cassandra-3.11.1.jar:3.11.1]
+	at org.apache.cassandra.utils.JMXServerUtils.configureRMIRegistry(JMXServerUtils.java:127) ~[apache-cassandra-3.11.1.jar:3.11.1]
+	at org.apache.cassandra.utils.JMXServerUtils.createJMXServer(JMXServerUtils.java:107) ~[apache-cassandra-3.11.1.jar:3.11.1]
+	at org.apache.cassandra.service.CassandraDaemon.maybeInitJmx(CassandraDaemon.java:143) [apache-cassandra-3.11.1.jar:3.11.1]
+	at org.apache.cassandra.service.CassandraDaemon.setup(CassandraDaemon.java:188) [apache-cassandra-3.11.1.jar:3.11.1]
+	at org.apache.cassandra.service.CassandraDaemon.activate(CassandraDaemon.java:600) [apache-cassandra-3.11.1.jar:3.11.1]
+	at org.apache.cassandra.service.CassandraDaemon.main(CassandraDaemon.java:689) [apache-cassandra-3.11.1.jar:3.11.1]
+v1020-wn-172-167:~ austinjiang$ cqlsh
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.1 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+cqlsh> describe keyspaces;
+
+dates          system_auth  system         system_distributed
+battery        powertrain   personal_info  test              
+system_schema  dev          motor          system_traces     
+
+cqlsh> use dates
+   ... ;
+cqlsh:dates> select * from date;
+
+ id  | day | month | year
+-----+-----+-------+------
+  23 |  23 |     1 | 2017
+ 114 |  24 |     4 | 2017
+  53 |  22 |     2 | 2017
+ 110 |  20 |     4 | 2017
+  91 |   1 |     4 | 2017
+ 128 |   8 |     5 | 2017
+ 363 |  29 |    12 | 2017
+ 251 |   8 |     9 | 2017
+ 310 |   6 |    11 | 2017
+ 247 |   4 |     9 | 2017
+ 214 |   2 |     8 | 2017
+ 117 |  27 |     4 | 2017
+ 144 |  24 |     5 | 2017
+ 120 |  30 |     4 | 2017
+ 219 |   7 |     8 | 2017
+ 140 |  20 |     5 | 2017
+ 308 |   4 |    11 | 2017
+  55 |  24 |     2 | 2017
+ 255 |  12 |     9 | 2017
+ 331 |  27 |    11 | 2017
+ 129 |   9 |     5 | 2017
+ 324 |  20 |    11 | 2017
+ 332 |  28 |    11 | 2017
+  33 |   2 |     2 | 2017
+ 132 |  12 |     5 | 2017
+ 340 |   6 |    12 | 2017
+ 274 |   1 |    10 | 2017
+ 185 |   4 |     7 | 2017
+   5 |   5 |     1 | 2017
+  28 |  28 |     1 | 2017
+ 277 |   4 |    10 | 2017
+ 105 |  15 |     4 | 2017
+ 313 |   9 |    11 | 2017
+ 123 |   3 |     5 | 2017
+  42 |  11 |     2 | 2017
+ 320 |  16 |    11 | 2017
+ 153 |   2 |     6 | 2017
+ 178 |  27 |     6 | 2017
+ 323 |  19 |    11 | 2017
+ 248 |   5 |     9 | 2017
+  50 |  19 |     2 | 2017
+  95 |   5 |     4 | 2017
+  88 |  29 |     3 | 2017
+  82 |  23 |     3 | 2017
+  49 |  18 |     2 | 2017
+  10 |  10 |     1 | 2017
+ 225 |  13 |     8 | 2017
+ 137 |  17 |     5 | 2017
+  83 |  24 |     3 | 2017
+ 264 |  21 |     9 | 2017
+ 245 |   2 |     9 | 2017
+ 361 |  27 |    12 | 2017
+ 241 |  29 |     8 | 2017
+ 286 |  13 |    10 | 2017
+ 118 |  28 |     4 | 2017
+ 261 |  18 |     9 | 2017
+ 237 |  25 |     8 | 2017
+ 194 |  13 |     7 | 2017
+  60 |   1 |     3 | 2017
+  67 |   8 |     3 | 2017
+ 125 |   5 |     5 | 2017
+ 197 |  16 |     7 | 2017
+ 134 |  14 |     5 | 2017
+ 201 |  20 |     7 | 2017
+ 360 |  26 |    12 | 2017
+  79 |  20 |     3 | 2017
+ 210 |  29 |     7 | 2017
+  16 |  16 |     1 | 2017
+  63 |   4 |     3 | 2017
+ 253 |  10 |     9 | 2017
+ 330 |  26 |    11 | 2017
+ 327 |  23 |    11 | 2017
+  80 |  21 |     3 | 2017
+ 139 |  19 |     5 | 2017
+ 213 |   1 |     8 | 2017
+ 328 |  24 |    11 | 2017
+  13 |  13 |     1 | 2017
+ 169 |  18 |     6 | 2017
+  30 |  30 |     1 | 2017
+ 145 |  25 |     5 | 2017
+ 351 |  17 |    12 | 2017
+ 211 |  30 |     7 | 2017
+ 111 |  21 |     4 | 2017
+  72 |  13 |     3 | 2017
+ 234 |  22 |     8 | 2017
+ 293 |  20 |    10 | 2017
+ 113 |  23 |     4 | 2017
+ 355 |  21 |    12 | 2017
+  99 |   9 |     4 | 2017
+ 222 |  10 |     8 | 2017
+ 160 |   9 |     6 | 2017
+  11 |  11 |     1 | 2017
+ 280 |   7 |    10 | 2017
+ 151 |  31 |     5 | 2017
+ 252 |   9 |     9 | 2017
+ 344 |  10 |    12 | 2017
+ 334 |  30 |    11 | 2017
+  19 |  19 |     1 | 2017
+ 263 |  20 |     9 | 2017
+ 269 |  26 |     9 | 2017
+
+---MORE---;
+ id  | day | month | year
+-----+-----+-------+------
+  61 |   2 |     3 | 2017
+ 157 |   6 |     6 | 2017
+ 204 |  23 |     7 | 2017
+  46 |  15 |     2 | 2017
+  43 |  12 |     2 | 2017
+ 130 |  10 |     5 | 2017
+   8 |   8 |     1 | 2017
+ 352 |  18 |    12 | 2017
+  52 |  21 |     2 | 2017
+ 311 |   7 |    11 | 2017
+ 283 |  10 |    10 | 2017
+ 257 |  14 |     9 | 2017
+ 221 |   9 |     8 | 2017
+ 122 |   2 |     5 | 2017
+ 212 |  31 |     7 | 2017
+ 346 |  12 |    12 | 2017
+   2 |   2 |     1 | 2017
+  45 |  14 |     2 | 2017
+ 176 |  25 |     6 | 2017
+ 322 |  18 |    11 | 2017
+  73 |  14 |     3 | 2017
+ 343 |   9 |    12 | 2017
+ 273 |  30 |     9 | 2017
+ 218 |   6 |     8 | 2017
+   4 |   4 |     1 | 2017
+  18 |  18 |     1 | 2017
+ 266 |  23 |     9 | 2017
+ 268 |  25 |     9 | 2017
+ 314 |  10 |    11 | 2017
+ 177 |  26 |     6 | 2017
+  51 |  20 |     2 | 2017
+  47 |  16 |     2 | 2017
+ 358 |  24 |    12 | 2017
+  84 |  25 |     3 | 2017
+  94 |   4 |     4 | 2017
+ 143 |  23 |     5 | 2017
+ 288 |  15 |    10 | 2017
+  74 |  15 |     3 | 2017
+ 359 |  25 |    12 | 2017
+ 215 |   3 |     8 | 2017
+ 220 |   8 |     8 | 2017
+  44 |  13 |     2 | 2017
+ 155 |   4 |     6 | 2017
+ 345 |  11 |    12 | 2017
+ 116 |  26 |     4 | 2017
+ 121 |   1 |     5 | 2017
+ 282 |   9 |    10 | 2017
+ 315 |  11 |    11 | 2017
+ 249 |   6 |     9 | 2017
+  96 |   6 |     4 | 2017
+ 184 |   3 |     7 | 2017
+ 356 |  22 |    12 | 2017
+ 146 |  26 |     5 | 2017
+  69 |  10 |     3 | 2017
+ 229 |  17 |     8 | 2017
+ 336 |   2 |    12 | 2017
+  15 |  15 |     1 | 2017
+ 244 |   1 |     9 | 2017
+ 365 |  31 |    12 | 2017
+ 209 |  28 |     7 | 2017
+  22 |  22 |     1 | 2017
+ 112 |  22 |     4 | 2017
+ 233 |  21 |     8 | 2017
+ 217 |   5 |     8 | 2017
+ 236 |  24 |     8 | 2017
+ 262 |  19 |     9 | 2017
+  98 |   8 |     4 | 2017
+ 224 |  12 |     8 | 2017
+ 152 |   1 |     6 | 2017
+ 135 |  15 |     5 | 2017
+ 302 |  29 |    10 | 2017
+  54 |  23 |     2 | 2017
+  75 |  16 |     3 | 2017
+ 338 |   4 |    12 | 2017
+ 259 |  16 |     9 | 2017
+ 287 |  14 |    10 | 2017
+ 115 |  25 |     4 | 2017
+ 271 |  28 |     9 | 2017
+ 256 |  13 |     9 | 2017
+ 203 |  22 |     7 | 2017
+ 174 |  23 |     6 | 2017
+ 279 |   6 |    10 | 2017
+ 173 |  22 |     6 | 2017
+ 183 |   2 |     7 | 2017
+  58 |  27 |     2 | 2017
+ 260 |  17 |     9 | 2017
+ 186 |   5 |     7 | 2017
+ 254 |  11 |     9 | 2017
+ 148 |  28 |     5 | 2017
+ 223 |  11 |     8 | 2017
+  86 |  27 |     3 | 2017
+  89 |  30 |     3 | 2017
+  78 |  19 |     3 | 2017
+ 265 |  22 |     9 | 2017
+ 216 |   4 |     8 | 2017
+ 243 |  31 |     8 | 2017
+ 189 |   8 |     7 | 2017
+ 107 |  17 |     4 | 2017
+ 149 |  29 |     5 | 2017
+  27 |  27 |     1 | 2017
+
+---MORE---
+ id  | day | month | year
+-----+-----+-------+------
+ 141 |  21 |     5 | 2017
+ 119 |  29 |     4 | 2017
+  59 |  28 |     2 | 2017
+ 296 |  23 |    10 | 2017
+ 289 |  16 |    10 | 2017
+  20 |  20 |     1 | 2017
+ 199 |  18 |     7 | 2017
+ 195 |  14 |     7 | 2017
+ 242 |  30 |     8 | 2017
+ 337 |   3 |    12 | 2017
+ 200 |  19 |     7 | 2017
+ 167 |  16 |     6 | 2017
+ 240 |  28 |     8 | 2017
+ 190 |   9 |     7 | 2017
+ 333 |  29 |    11 | 2017
+   7 |   7 |     1 | 2017
+ 226 |  14 |     8 | 2017
+ 150 |  30 |     5 | 2017
+ 281 |   8 |    10 | 2017
+  85 |  26 |     3 | 2017
+ 207 |  26 |     7 | 2017
+ 100 |  10 |     4 | 2017
+ 295 |  22 |    10 | 2017
+ 317 |  13 |    11 | 2017
+ 297 |  24 |    10 | 2017
+ 131 |  11 |     5 | 2017
+  36 |   5 |     2 | 2017
+  40 |   9 |     2 | 2017
+ 198 |  17 |     7 | 2017
+ 347 |  13 |    12 | 2017
+  68 |   9 |     3 | 2017
+ 341 |   7 |    12 | 2017
+ 179 |  28 |     6 | 2017
+ 307 |   3 |    11 | 2017
+ 193 |  12 |     7 | 2017
+  38 |   7 |     2 | 2017
+ 319 |  15 |    11 | 2017
+ 298 |  25 |    10 | 2017
+ 187 |   6 |     7 | 2017
+ 291 |  18 |    10 | 2017
+  57 |  26 |     2 | 2017
+  39 |   8 |     2 | 2017
+ 205 |  24 |     7 | 2017
+ 306 |   2 |    11 | 2017
+   6 |   6 |     1 | 2017
+  71 |  12 |     3 | 2017
+ 126 |   6 |     5 | 2017
+ 228 |  16 |     8 | 2017
+ 208 |  27 |     7 | 2017
+ 156 |   5 |     6 | 2017
+ 231 |  19 |     8 | 2017
+  81 |  22 |     3 | 2017
+ 227 |  15 |     8 | 2017
+  29 |  29 |     1 | 2017
+ 182 |   1 |     7 | 2017
+ 172 |  21 |     6 | 2017
+ 300 |  27 |    10 | 2017
+  64 |   5 |     3 | 2017
+  37 |   6 |     2 | 2017
+ 290 |  17 |    10 | 2017
+  76 |  17 |     3 | 2017
+   9 |   9 |     1 | 2017
+ 357 |  23 |    12 | 2017
+ 312 |   8 |    11 | 2017
+ 270 |  27 |     9 | 2017
+ 168 |  17 |     6 | 2017
+ 354 |  20 |    12 | 2017
+ 258 |  15 |     9 | 2017
+ 349 |  15 |    12 | 2017
+ 335 |   1 |    12 | 2017
+ 230 |  18 |     8 | 2017
+  14 |  14 |     1 | 2017
+ 180 |  29 |     6 | 2017
+ 267 |  24 |     9 | 2017
+ 342 |   8 |    12 | 2017
+ 108 |  18 |     4 | 2017
+ 235 |  23 |     8 | 2017
+ 206 |  25 |     7 | 2017
+ 127 |   7 |     5 | 2017
+ 171 |  20 |     6 | 2017
+ 339 |   5 |    12 | 2017
+ 188 |   7 |     7 | 2017
+  93 |   3 |     4 | 2017
+ 326 |  22 |    11 | 2017
+ 170 |  19 |     6 | 2017
+ 316 |  12 |    11 | 2017
+  56 |  25 |     2 | 2017
+ 158 |   7 |     6 | 2017
+ 348 |  14 |    12 | 2017
+ 142 |  22 |     5 | 2017
+  26 |  26 |     1 | 2017
+ 276 |   3 |    10 | 2017
+  21 |  21 |     1 | 2017
+ 250 |   7 |     9 | 2017
+ 175 |  24 |     6 | 2017
+ 109 |  19 |     4 | 2017
+  17 |  17 |     1 | 2017
+ 104 |  14 |     4 | 2017
+ 102 |  12 |     4 | 2017
+ 305 |   1 |    11 | 2017
+
+---MORE---
+ id  | day | month | year
+-----+-----+-------+------
+ 106 |  16 |     4 | 2017
+  35 |   4 |     2 | 2017
+ 147 |  27 |     5 | 2017
+ 284 |  11 |    10 | 2017
+ 191 |  10 |     7 | 2017
+ 303 |  30 |    10 | 2017
+ 329 |  25 |    11 | 2017
+ 272 |  29 |     9 | 2017
+  31 |  31 |     1 | 2017
+ 166 |  15 |     6 | 2017
+  48 |  17 |     2 | 2017
+ 101 |  11 |     4 | 2017
+ 299 |  26 |    10 | 2017
+ 364 |  30 |    12 | 2017
+ 292 |  19 |    10 | 2017
+  92 |   2 |     4 | 2017
+ 163 |  12 |     6 | 2017
+  62 |   3 |     3 | 2017
+ 124 |   4 |     5 | 2017
+ 318 |  14 |    11 | 2017
+ 138 |  18 |     5 | 2017
+  24 |  24 |     1 | 2017
+  32 |   1 |     2 | 2017
+ 164 |  13 |     6 | 2017
+  41 |  10 |     2 | 2017
+ 246 |   3 |     9 | 2017
+ 362 |  28 |    12 | 2017
+  65 |   6 |     3 | 2017
+ 154 |   3 |     6 | 2017
+ 304 |  31 |    10 | 2017
+  97 |   7 |     4 | 2017
+ 165 |  14 |     6 | 2017
+ 301 |  28 |    10 | 2017
+ 192 |  11 |     7 | 2017
+ 159 |   8 |     6 | 2017
+ 285 |  12 |    10 | 2017
+ 278 |   5 |    10 | 2017
+ 325 |  21 |    11 | 2017
+ 133 |  13 |     5 | 2017
+ 196 |  15 |     7 | 2017
+ 136 |  16 |     5 | 2017
+ 239 |  27 |     8 | 2017
+ 353 |  19 |    12 | 2017
+  25 |  25 |     1 | 2017
+ 181 |  30 |     6 | 2017
+  66 |   7 |     3 | 2017
+ 321 |  17 |    11 | 2017
+  34 |   3 |     2 | 2017
+  87 |  28 |     3 | 2017
+ 202 |  21 |     7 | 2017
+  70 |  11 |     3 | 2017
+  12 |  12 |     1 | 2017
+  90 |  31 |     3 | 2017
+  77 |  18 |     3 | 2017
+ 294 |  21 |    10 | 2017
+ 350 |  16 |    12 | 2017
+ 162 |  11 |     6 | 2017
+ 238 |  26 |     8 | 2017
+   3 |   3 |     1 | 2017
+ 161 |  10 |     6 | 2017
+ 275 |   2 |    10 | 2017
+ 309 |   5 |    11 | 2017
+ 232 |  20 |     8 | 2017
+ 103 |  13 |     4 | 2017
+
+(364 rows)
+cqlsh:dates> select * from date where day = 1 allow filtering;
+
+ id  | day | month | year
+-----+-----+-------+------
+  91 |   1 |     4 | 2017
+ 274 |   1 |    10 | 2017
+  60 |   1 |     3 | 2017
+ 213 |   1 |     8 | 2017
+ 121 |   1 |     5 | 2017
+ 244 |   1 |     9 | 2017
+ 152 |   1 |     6 | 2017
+ 182 |   1 |     7 | 2017
+ 335 |   1 |    12 | 2017
+ 305 |   1 |    11 | 2017
+  32 |   1 |     2 | 2017
+
+(11 rows)
+cqlsh:dates> select * from date where day = 1 and month = 1
+         ... ;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot execute this query as it might involve data filtering and thus may have unpredictable performance. If you want to execute this query despite the performance unpredictability, use ALLOW FILTERING"
+cqlsh:dates> select * from date where day = 1 and month = 1 allow filtering;
+
+ id | day | month | year
+----+-----+-------+------
+
+(0 rows)
+cqlsh:dates> select * from date where id = 1;
+
+ id | day | month | year
+----+-----+-------+------
+
+(0 rows)
+cqlsh:dates> select * from date where id = 2;
+
+ id | day | month | year
+----+-----+-------+------
+  2 |   2 |     1 | 2017
+
+(1 rows)
+cqlsh:dates> insert into date (id, day, month, year) 
+         ... values (1, 1, 1, 2017);
+cqlsh:dates> select * from date where id = 1;
+
+ id | day | month | year
+----+-----+-------+------
+  1 |   1 |     1 | 2017
+
+(1 rows)
+cqlsh:dates> 

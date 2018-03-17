@@ -1,0 +1,63 @@
+Last login: Sun Nov  5 17:47:10 on ttys000
+v1020-wn-172-167:~ austinjiang$ cassandra -f
+
+v1020-wn-172-167:~ austinjiang$ cqlsh
+
+cqlsh> describe keyspaces;
+
+battery        powertrain  personal_info       test         
+system_schema  dev         motor               system_traces
+system_auth    system      system_distributed
+
+cqlsh> use personal_info
+;
+cqlsh:personal_info> describe tables;
+
+info  cars
+
+cqlsh:personal_info> select * from info;
+
+ infoid | birth_year | info_height | info_iq    | info_name | info_weight
+--------+------------+-------------+------------+-----------+-------------
+      5 |       1999 |        null |       null |      null |        null
+      1 |       null |         5.7 |       1000 |       Jar |         100
+      2 |       null |         1.2 |   12323131 |     James |         200
+      4 |       null |        null |       null |    Justin |        null
+      6 |       null |        null | 1312312312 |      null |        null
+      3 |       null |        null |       null |    Austin |        null
+
+(6 rows)
+
+cqlsh:personal_info> describe keyspaces;
+
+battery        powertrain  personal_info       test         
+system_schema  dev         motor               system_traces
+system_auth    system      system_distributed
+
+cqlsh:personal_info> use motor;
+
+cqlsh:motor> describe tables;
+
+cooling  encoders  temperature
+
+cqlsh:motor> select * from cooling;
+
+ hour | minute | second | millisecond | microsecond | state | date | flow | temperature_in | temperature_out
+------+--------+--------+-------------+-------------+-------+------+------+----------------+-----------------
+
+(0 rows)
+
+cqlsh:motor> create keyspace DATES
+         ... with replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+
+cqlsh:motor> use dates;
+
+cqlsh:dates> create table date(id int, year int, month int, day int, PRIMARY KEY(id));
+
+cqlsh:dates> select * from date;
+
+ id | day | month | year
+----+-----+-------+------
+
+(0 rows)
+
