@@ -36,8 +36,7 @@ var g = new JustGage({
 var counter = 0, transDeg = 0, transRadius = 0, RUNTIME = 50;
 
 function imuMove(counter) {
-   	if (counter % RUNTIME == 0)
-   	{
+   	if (counter % RUNTIME == 0) {
     	transDeg =  Math.random() * 6.2;
     	transRadius =  Math.random() * 28;
     }
@@ -56,7 +55,7 @@ setInterval(function() {
 
 
 
-//______________WHEEL ANGE SIM____________________________________________________________
+//______________WHEEL ANGLE SIM____________________________________________________________
 document.getElementById("rotateButton").onmousedown = function(event) {
     var deg = document.getElementById('rotateDeg').value;
     document.getElementById("steering").style.WebkitTransform = "rotate(" + deg + "deg)";
