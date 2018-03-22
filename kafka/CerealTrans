@@ -40,14 +40,17 @@ class ReadThread implements Runnable {
 
     private boolean readSerial(Queue ids, BufferedReader br) {
         try {
-            int idLength = br.read(), id = 0, dat = 0, i = 0, dataLength = 0;
+            int idLength = 0, id = 0, dat = 0, i = 0, dataLength = 0;
             if (ids.size()>100000) //Acceptable lag
                 ids.clear();
 
             while(true)  //Waits until star message is received
                 if (br.read() == 1)
                         break;
-
+            
+            
+            idLength = br.read();
+            
             for (i = 0; i < idLength; i ++)
                 id += (br.read() << (8*(idLength-1-i)));
             messageData dU = new messageData();
