@@ -36,7 +36,8 @@ var g = new JustGage({
 var counter = 0, transDeg = 0, transRadius = 0, RUNTIME = 50;
 
 function imuMove(counter) {
-   	if (counter % RUNTIME == 0) {
+   	if (counter % RUNTIME == 0)
+   	{
     	transDeg =  Math.random() * 6.2;
     	transRadius =  Math.random() * 28;
     }
@@ -55,7 +56,7 @@ setInterval(function() {
 
 
 
-//______________WHEEL ANGLE SIM____________________________________________________________
+//______________WHEEL ANGE SIM____________________________________________________________
 document.getElementById("rotateButton").onmousedown = function(event) {
     var deg = document.getElementById('rotateDeg').value;
     document.getElementById("steering").style.WebkitTransform = "rotate(" + deg + "deg)";
@@ -494,138 +495,13 @@ window.onload = function() {
     }
 
     Plotly.newPlot('heatMap', data, layout);
+    //____________________________________________________________________________________
 
-    //______Brake Chart_________________________________________________________________
-    var brakeChart = new CanvasJS.Chart("brake", {
-    	backgroundColor: '',
-    	title:{
-    		fontStyle: "italic",
-    		titleFontSize: 20,
-    		//text:"Brake Percentage"
-    	},
-    	axisX:{
-    		labelFontSize: 20,
-    	},
-    	axisY: {
-    		labelFontSize: 12,
-    		maximum: 100,
-    		minimum: 0,
-    		suffix: "%",
-    	},
-    	dataPointWidth: 85,
-    	data: [{
-    		type: "bar",
-    		name: "Braking Force",
-    		color: "#FF0000",
-    		dataPoints: [
-    		{label: "0", y: 0}
-    		]
-    	}]
-    });
 
-    brakeChart.render();
-    //create random  battery power values
-    var updatebrakeChart = function() {
-    	var x = Math.floor(Math.random() * 100 + 1);
-    	var red = "#FF0000"
-    	var green = "#33FF33";
-    	var yellow = "FFF000";
-    	var color = green;
-      if(x<10){
-    		labelx = "0" + x;
-    	}
-    	else if(x>10 && x<100){
-    		labelx = "\xa0"+ x;
-    	}
-    	else{
-    		labelx = x.toString();
-    	}
-    	if (x<=50){
-    		color = green;
-    	}
-    	else if (x>50&&x<80){
-    		color = yellow;
-    	}
-    	else {
-    		color = red;
-    	}
-    	brakeChart.options.data[0].dataPoints[0] = {
-    		label: labelx+"%",
-    		color: color,
-    		y: x
-    	};
-    	brakeChart.render();
-    }
 
-    //_______Throttle___Chart________________________________________
-    var throttleChart = new CanvasJS.Chart("throttle", {
-    	backgroundColor: '',
-    	title:{
-    		fontStyle: "italic",
-    		titleFontSize: 20,
-    		//text:"throttle Percentage"
-    	},
-    	axisX:{
-    		labelFontSize: 20,
-    	},
-    	axisY: {
-    		labelFontSize: 12,
-    		maximum: 100,
-    		minimum: 0,
-    		suffix: "%",
-    	},
-    	dataPointWidth: 85,
-    	data: [{
-    		type: "bar",
-    		name: "Throttle Level",
-    		color: "#FF0000",
-    		dataPoints: [
-    		{label: "0", y: 0}
-    		]
-    	}]
-    });
 
-    throttleChart.render();
-    //create random  throttle value
-    var updatethrottleChart = function() {
-    	var x = Math.floor(Math.random() * 100 + 1);
-    	var red = "#FF0000"
-    	var green = "#33FF33";
-    	var yellow = yellow;
-    	var color = green;
-      if(x<10){
-    		labelx = "0" + x;
-    	}
-    	else if(x>10 && x<100){
-    		labelx = "\xa0"+ x;
-    	}
-    	else{
-    		labelx = x.toString();
-    	}
-    	if (x<=50){
-    		color = green;
-    	}
-    	else if (x>50&&x<80){
-    		color = yellow;
-    	}
-    	else {
-    		color = red;
-    	}
-    	throttleChart.options.data[0].dataPoints[0] = {
-    		label: labelx+"%",
-    		color: color,
-    		y: x
-    	};
-      throttleChart.render();
-    }
 
     //_________UPDATING NUMBERS FOR EVERYTHING____________________________________________
-
-    setInterval(function() {
-    	updatebrakeChart();
-    	updatethrottleChart();
-    },1000);
-
     updateChart(currentLength);
 
     setInterval(function() {

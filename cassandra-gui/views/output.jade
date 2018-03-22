@@ -1,0 +1,90 @@
+extends layout
+
+block content
+  header
+    img(src='images/Images/logo_waterloo_formula_electric.png', alt='Formula ELectric Logo', width='250px', style='padding-right: 25px')
+    .btn-group
+      button.btn.btn-primary(type='button') Test Mode
+      button.btn.btn-primary(type='button') Race Mode
+  .container-fluid.full-width
+    .row
+      // row 1
+      .col-sm-6
+        .row
+          .col-sm-3
+            // column 1 - 1 spot | raw data
+            div
+              h3 Raw data
+              p#raw
+          .col-sm-5
+            // column 3 - 3 spots |
+            .row(style='border-left-style: none;border-bottom-style: none;')
+              // tires
+              h3 Tires
+            .row(style='border-left-style: none;border-bottom-style: none;')
+              // steering
+              h3 Steering
+              img#steering(width='90', height='90', style='float: right', src='images/Images/steeringWheel.png')
+              |  Rotation angle:
+              input#rotateDeg.rotateField(name='rotateDeg', type='number', maxlength='4')
+              br
+              button#rotateButton(type='button') Rotate
+            .row(style='border-left-style: none;border-bottom-style: none;')
+              // IMU
+              h3 IMU
+              img#IMU.IMU(width='150', height='150', src='images/Images/IMU.png')
+              img#Ball.IMU_BALL(width='30', height='30', src='images/Images/Ball.png')
+          .col-sm-4
+            // column 4 - 3 spots |
+            .row(style='border-left-style: none;border-bottom-style: none;')
+              // suspension
+              h3 Suspension
+              table(border='2')
+                th Left Wheels
+                th Right Wheels
+                tr
+                  td#FL 0
+                  td#FR 0
+                tr
+                  td#RL 0
+                  td#RR 0
+            .row(style='border-left-style: none;border-bottom-style: none;')
+              // brakes
+              h3 Brakes
+            .row(style='border-left-style: none;border-bottom-style: none;')
+              // trhottle
+              h3 Throttle
+      .col-sm-6(style='border-style: none;')
+        // column 2 - 5 spots | charts
+        h3(style='padding-bottom: 5px') Chart Data
+        #chartContainer(style='height: 40vh; border-style: none; margin: 0px -15px 0px -15px;')
+    .row(style='height:45%; display: block;')
+      // row 2
+      .col-sm-6
+        .row
+          .col-sm-3
+            // column 1 - 1 spot | errors
+            #error(style='border-style: none')
+              h3 Errors
+              p#errors
+          .col-sm-9
+            // column 2 - 5 spots
+            .row
+              .col-sm-5(style='border-style: none')
+                // column 1 - 4 spots | Motor speed
+                #gauge(style='height:200px;border-style:none')
+              .col-sm-2(style='border-left-style: none;border-bottom-style: none;')
+                // column 2 - 4 spots | battery
+                #batteryFill(style='height: 25vh; border-style: none; margin: 0px -15px 0px -15px;')
+              .col-sm-5(style='border-left-style: none;border-bottom-style: none;')
+                // column 3 - 4 spots | damper
+                h3 Damper
+            .row(style='border-style: none; height:20vh;border-style: none;')
+              // voltage
+              h3 Accumulator Voltage
+              #voltageChart(style='height: 100%; width: 100%;border-style: none')
+      .col-sm-6
+        // column 1 - 6 spots | heat map
+        h3 Accumulator Temperature
+        #heatMap(style='height: 40vh; width: 100%;border-style: none')
+  script(src='javascripts/guiFrontEnd.js')
