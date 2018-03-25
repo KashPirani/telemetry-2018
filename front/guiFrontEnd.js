@@ -60,10 +60,47 @@ document.getElementById("rotateButton").onmousedown = function(event) {
     var deg = document.getElementById('rotateDeg').value;
     document.getElementById("steering").style.WebkitTransform = "rotate(" + deg + "deg)";
 }
-//________________________________________________________________________________________
 
 
+//__________________Battery_______________________________________________________
+	function updateBatteryChart() {
+	x++;
+	if(x>=0 && x<20){
+		document.getElementById("img").src = "battery/battery_status0.png";
+		document.getElementById("percentage").innerHTML = x + "%";
+	}
+	else if (x>=20 && x<40){
+		document.getElementById("img").src = "battery/battery_status1.png";
+		document.getElementById("percentage").innerHTML = x + "%";
+	}
+	else if (x>=40 && x<60){
+		document.getElementById("img").src = "battery/battery_status2.png";
+		document.getElementById("percentage").innerHTML = x + "%";
+	}
+	else if (x>=60 && x<80){
+		document.getElementById("img").src = "battery/battery_status3.png";
+		document.getElementById("percentage").innerHTML = x + "%";
+	}
+	else if (x>=80 && x<100){
+		document.getElementById("img").src = "battery/battery_status4.png";
+		document.getElementById("percentage").innerHTML = x + "%";
+	}
+	else if(x>=100 && x<120){
+		document.getElementById("img").src = "battery/battery_status5.png";
+		document.getElementById("percentage").innerHTML = 100 + "%";
+	}
+	else{
+		x= -1;
+		document.getElementById("percentage").innerHTML = 0  + "%";
+	}
 
+	/*else{
+		x=-1;
+		document.getElementById("img").src ="battery_charge.png";
+	}
+	*/
+}
+var x = -1;
 
 
 //____________EVERYTHING IS ADDED ONCE THE WINDOW LOADS___________________________________
@@ -625,6 +662,10 @@ window.onload = function() {
     	updatebrakeChart();
     	updatethrottleChart();
     },1000);
+
+    setInterval(function() {
+      	updateBatteryChart();
+      },50);
 
     updateChart(currentLength);
 
