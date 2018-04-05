@@ -1,6 +1,28 @@
+/*
+// kafka imports
+import org.apache.kafka.clients.producer.*;
+import org.apache.kafka.common.serialization.LongSerializer;
+import org.apache.kafka.common.serialization.StringSerializer;
+import org.apache.kafka.common.serialization.ByteArraySerializer;
+// avro imports
+import org.apache.avro.Schema;
+import org.apache.avro.generic.GenericData;
+import org.apache.avro.generic.GenericRecord;*/
+// java utils import
 import java.io.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
 
+public static final String FESchema = "{"
+        + "\"type\":\"record\","
+        + "\"name\":\"FERecord\","
+        + "\"fields\":["
+        + "  { \"name\":\"state\", \"type\":\"int\" },"
+        + "  { \"name\":\"DBC1\", \"type\":\"float\" },"
+        + "  { \"name\":\"DBC2\", \"type\":\"float\" }"
+        + "]}";
 
 public class Main {
 
@@ -25,13 +47,15 @@ class ReadThread implements Runnable {
         HashMap hm = new HashMap(150);
         try {
             BufferedReader br = new BufferedReader(new FileReader("/dev/cu.usbmodem1411")); //S0 or S1 or S2
-            while(true)
-            {
-                readSerial(ids, br);
-                messageData newDat = (messageData)ids.remove();
-                translate(hm,newDat.dataCOM,newDat.idCOM);
-                System.out.println(hm);
-
+            System.out.println(br.read() + "\n\n");
+            while(true) {
+                if (readSerial(ids, br))
+                {
+                    messageData newDat = (messageData) ids.remove();
+                    translate(hm, newDat.dataCOM, newDat.idCOM);
+                    System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
+                    System.out.println(hm);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,33 +64,36 @@ class ReadThread implements Runnable {
 
     private boolean readSerial(Queue ids, BufferedReader br) {
         try {
-            int idLength = 0, id = 0, dat = 0, i = 0, dataLength = 0;
+            int idLength = 0, id = 0, i = 0, dataLength = 0;
+            long dat = 0;
             if (ids.size()>100000) //Acceptable lag
                 ids.clear();
 
             while(true)  //Waits until star message is received
                 if (br.read() == 1)
                         break;
-            
-            
+
             idLength = br.read();
-            
             for (i = 0; i < idLength; i ++)
                 id += (br.read() << (8*(idLength-1-i)));
             messageData dU = new messageData();
 
-            if (br.read() != 9) // Makes  sure message completes
+            if (br.read() != 9) { // Makes  sure message completes
+                System.out.println("Identifier not completed");
                 return false;
+            }
 
             dataLength = br.read();
             for (i = 0; i < dataLength; i ++)
-                dat += (br.read() << (8*(dataLength-1-i)));
+                dat += ((long)br.read() << (8*(dataLength-1-i)));
 
-            if (br.read() != 0) // Makes  sure message completes
+            if (br.read() != 0) { // Makes  sure message completes
+                System.out.println("Message not completed");
                 return false;
-
+            }
             dU.idCOM = id;
             dU.dataCOM = dat;
+            System.out.println(id+" "+dat+"\n\n");
             ids.add(dU);
             return true;
 
@@ -1104,6 +1131,15 @@ class ReadThread implements Runnable {
                 hm.put("SpeedWheelRightFront", temp);
 
                 break;
+        }
+    }
+
+    private static void updateSchema (HashMap hm)
+    {
+        for (Map.Entry<String, Integer> entry : hm.entrySet()) {
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            FESchema.put(key, value);
         }
     }
 }
