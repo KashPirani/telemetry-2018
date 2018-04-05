@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Formula Electric
+  ul
+    each first_name, i in arjun
+      li
+        a(href="/person/#{first_name.first_name}") #{first_name.first_name} #{first_name.last_name}
