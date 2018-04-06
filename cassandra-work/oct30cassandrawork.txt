@@ -1,0 +1,191 @@
+Last login: Mon Oct 30 01:39:24 on ttys001
+
+v1020-wn-111-226:~ austinjiang$ cassandra -f
+
+v1020-wn-111-226:~ austinjiang$ cqlsh
+
+
+cqlsh> create keyspace test
+   ... with replication = {'class': 'SimpleStrategy', 'replication_factor': '1'};
+AlreadyExists: Keyspace 'test' already exists
+cqlsh> use test                                                                    ... create table (empid int primary key, emp_first varchar, emp_last varchar, emp_dept varchar);
+Improper use command.
+cqlsh> use test; 
+cqlsh:test> create table emp
+        ... empid int primary key
+        ... (empid int primiary key);
+SyntaxException: line 2:0 no viable alternative at input 'empid' (create table [emp]empid...)
+cqlsh:test> create table test123
+        ... create table test123
+        ... 
+        ... 
+        ... 
+        ... efe
+Statements are terminated with a ';'.  You can press CTRL-C to cancel an incomplete statement.f
+        ... e
+        ... 
+        ... empid 
+        ... empit int primary key)l
+        ... empit int primary key);
+SyntaxException: line 2:0 no viable alternative at input 'create' (create table [test123]create...)
+cqlsh:test> create table xxx
+        ... (empid int primary key, emp_first varchar, emp_last varchar, emp_dept varchar);
+
+cqlsh:test> quit
+
+v1020-wn-111-226:~ austinjiang$ cassandra -f
+v1020-wn-111-226:~ austinjiang$ cqlsh
+
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.1 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+
+cqlsh> create keyspace personal_info
+   ... with replication = {'class':'SimpleStrategy', 'replication_factor':1};
+cqlsh> use personal_info
+   ... create table info(infoid int primary key, info_firstname, info_lastname, info_height, info_weight, info_iq);
+Improper use command.
+cqlsh> create table info
+   ... (infoid int primary key
+   ... create
+   ... info_id
+   ... infoid int primary key,
+   ... (empid int primary key, emp_first varchar, emp_last vharchar, emp_dept varchar);
+SyntaxException: line 3:0 mismatched input 'create' expecting ')' (...(infoid int primary key[create]...)
+cqlsh> create table info(infoid int primary key, info_name varchar, info_height varchar, info_weight varchar, info_iq varchar);
+InvalidRequest: Error from server: code=2200 [Invalid query] message="No keyspace has been specified. USE a keyspace, or explicitly specify keyspace.tablename"
+cqlsh> use personal info
+   ... create table info(infoid int primary key, info_name varchar, info_height varchar, info_weight varchar, info_iq varchar);
+Improper use command.
+
+cqlsh> use personal_info
+   ... use personal info create table info(infoid int primary key, info_name varchar, info_height varchar, info_weight varchar, info_iq varchar);
+Improper use command.
+cqlsh> use personal_info                                                           ... use personal info create table info(infoid int primary key, info_name varchar, info_height varchar, info_weight varchar, info_iq varchar);
+Improper use command.
+cqlsh> use personal_info;
+cqlsh:personal_info> create table info(infoid int primary key, info_name varchar, info_height varchar, info_weight varchar, info_iq varchar);
+cqlsh:personal_info> insert into info(infoid, name, height, weight, iq)
+                 ... values(1, 'Raj_Mody', '5.7', '100', '1000');
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Undefined column name name"
+cqlsh:personal_info> insert into info(infoid, name, height, weight, iq)                          ... values (1, 'Raj', 'FiveFoot', 'hundred', 'hundred');
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Undefined column name name"
+cqlsh:personal_info> insert into info (infoid, info_name, info_height, info_weight, info_iq)
+                 ... values (1, 'Raj', '5.7', '100', '1000');
+cqlsh:personal_info> select * from info;
+
+ infoid | info_height | info_iq | info_name | info_weight
+--------+-------------+---------+-----------+-------------
+      1 |         5.7 |    1000 |       Raj |         100
+
+(1 rows)
+cqlsh:personal_info> insert into info(infoid, info_name, info_height, info_weight, info_iq)
+                 ... values(2, 'James', '1.2', '200, '1232313');
+                 ... 
+                 ... values
+                 ... values (1, 'Raj', '5.7', '100', '1000');                                                    ... values (2, 'James', '1.2', '200, '1232313');
+SyntaxException: line 2:33 mismatched input '1232313' expecting ')' (...2, 'James', '1.2', '200, '[1232313]...)
+cqlsh:personal_info> select * from info;                                                        
+ infoid | info_height | info_iq | info_name | info_weight
+--------+-------------+---------+-----------+-------------
+      1 |         5.7 |    1000 |       Raj |         100
+
+(1 rows)
+cqlsh:personal_info> insert into info(infoid, info_name, info_height, info_weight, info_iq)
+                 ... values (2, 'James', '1.2', '200', '12323131');
+cqlsh:personal_info> select * from info;
+
+ infoid | info_height | info_iq  | info_name | info_weight
+--------+-------------+----------+-----------+-------------
+      1 |         5.7 |     1000 |       Raj |         100
+      2 |         1.2 | 12323131 |     James |         200
+
+(2 rows)
+cqlsh:personal_info> insert into info(infoid, info_name, info_height, info_weight, info_iq)                      ... values (3, 'Austin', '', '', '1000');
+cqlsh:personal_info> select * from info;
+
+ infoid | info_height | info_iq  | info_name | info_weight
+--------+-------------+----------+-----------+-------------
+      1 |         5.7 |     1000 |       Raj |         100
+      2 |         1.2 | 12323131 |     James |         200
+      3 |             |     1000 |    Austin |            
+
+(3 rows)
+cqlsh:personal_info> 
+cqlsh:personal_info> insert into info(infoid, info_name, info_height)
+                 ... values(4, 'Matt', '3.5');
+cqlsh:personal_info> select * from info;
+
+ infoid | info_height | info_iq  | info_name | info_weight
+--------+-------------+----------+-----------+-------------
+      1 |         5.7 |     1000 |       Raj |         100
+      2 |         1.2 | 12323131 |     James |         200
+      4 |         3.5 |     null |      Matt |        null
+      3 |             |     1000 |    Austin |            
+
+(4 rows)
+
+cqlsh:personal_info> ALTER TABLE personal_info.info
+                 ... ADD birth_year text;
+cqlsh:personal_info> select * from info;
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      1 |       null |         5.7 |     1000 |       Raj |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+      4 |       null |         3.5 |     null |      Matt |        null
+      3 |       null |             |     1000 |    Austin |            
+
+(4 rows)
+
+cqlsh:personal_info> update info set info_name
+                 ... 'Jar' where infoid = 1;
+SyntaxException: line 2:0 no viable alternative at input 'Jar' (update info set info_name['Ja]...)
+cqlsh:personal_info> update info set info_name = 'Jar' where infoid = 1;
+cqlsh:personal_info> select * from info;
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      1 |       null |         5.7 |     1000 |       Jar |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+      4 |       null |         3.5 |     null |      Matt |        null
+      3 |       null |             |     1000 |    Austin |            
+
+(4 rows)
+cqlsh:personal_info> create table cars(id int primary key, make varchar, model varchar, year varchar);
+cqlsh:personal_info> select * from cars;
+
+ id | make | model | year
+----+------+-------+------
+
+(0 rows)
+cqlsh:personal_info> insert into car (id, make, model, year)
+                 ... values (1, 'MB', 'S550', 2008);
+InvalidRequest: Error from server: code=2200 [Invalid query] message="unconfigured table car"
+cqlsh:personal_info> insert into car (id, make, model, year) values (1, 'MB', 'S550', '2008');
+InvalidRequest: Error from server: code=2200 [Invalid query] message="unconfigured table car"
+cqlsh:personal_info> insert into cars (id, make, model, year) values (1, 'MB', 'S550', '2008');
+cqlsh:personal_info> select infoid = 1 from cars;
+SyntaxException: line 1:14 no viable alternative at input '=' (select [infoid] =...)
+cqlsh:personal_info> select * from cars where id 
+                 ... = 1
+                 ... ;
+
+ id | make | model | year
+----+------+-------+------
+  1 |   MB |  S550 | 2008
+
+(1 rows)
+cqlsh:personal_info> select * from cars and personal_info where id = 1 and infoid = 1
+                 ... ;
+SyntaxException: line 1:19 no viable alternative at input 'and' (select * from [cars] and...)
+cqlsh:personal_info> select * from personal_info where infoid = 1;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="unconfigured table personal_info"
+cqlsh:personal_info> select * from info where infoid = 1;
+
+ infoid | birth_year | info_height | info_iq | info_name | info_weight
+--------+------------+-------------+---------+-----------+-------------
+      1 |       null |         5.7 |    1000 |       Jar |         100
+
+(1 rows)
+cqlsh:personal_info> 

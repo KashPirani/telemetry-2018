@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
     <head>
         <link rel="stylesheet" type="text/css" href="Bootstrap/css/bootstrap.min.css">
-        <script src="Bootstrap/js/bootstrap.min.js"></script>	
-        <script src="CanvasJS/canvasjs.min.js"></script>	
+        <script src="Bootstrap/js/bootstrap.min.js"></script>
+        <script src="CanvasJS/canvasjs.min.js"></script>
         <script src="JustGauge/raphael-2.1.4.min.js"></script>
         <script src="JustGauge/justgage.js"></script>
         <script src="Plot.ly/plotly-latest.min.js"></script>
@@ -24,22 +24,22 @@
 
 
         <style type="text/css">
-            h3 
+            h3
             {
                 color: black;
             }
 
-            html 
+            html
             {
                 box-sizing: border-box;
             }
 
-            *, *:before, *:after 
+            *, *:before, *:after
             {
               box-sizing: inherit;
             }
 
-            body, html, .container-fluid 
+            body, html, .container-fluid
             {
                 height: 100%;
             }
@@ -80,7 +80,7 @@
                                 <p id="raw"></p>
                             </div>
                         </div>
-                        
+
                         <div class="col-sm-5"><!--column 3 - 3 spots | -->
                             <div class="row" style="border-left-style: none;border-bottom-style: none;"><!-- tires-->
                                 <h3>Tires</h3>
@@ -97,7 +97,7 @@
                             <div class="row" style="border-left-style: none;border-bottom-style: none;"><!-- IMU-->
                                 <h3>IMU</h3>
                                 <img width="150" height="150" class="IMU" id="IMU" src="images/IMU.png" />
-                                <img width="30" height="30" class="IMU_BALL" id="Ball" src="images/Ball.png" /> 
+                                <img width="30" height="30" class="IMU_BALL" id="Ball" src="images/Ball.png" />
                             </div>
                         </div>
 
@@ -119,23 +119,26 @@
                             </div>
 
                             <div class="row" style="border-left-style: none;border-bottom-style: none;"> <!--brakes-->
-                                <h3>Brakes</h3>
+                                <h3>Brake Percentage</h3>
+                                <!--<div id="chartContainer" style="height: 40vh; border-style: none; margin: 0px -15px 0px -15px;"></div>-->
+                                <div id="brake" style="height: 100px; width: 200px;"></div>
                             </div>
 
                             <div class="row"style="border-left-style: none;border-bottom-style: none;"> <!--trhottle-->
                                 <h3>Throttle</h3>
+                                <div id="throttle" style="height: 100px; width: 200px;"></div>
                             </div>
-                        </div>	
+                        </div>
                     </div>
                 </div>
-                
+
                 <div class="col-sm-6" style="border-style: none;"><!--column 2 - 5 spots | charts-->
                     <h3 style="padding-bottom: 5px">Chart Data</h3>
-                    <div id="chartContainer" style="height: 40vh; border-style: none; margin: 0px -15px 0px -15px;"></div>		
+                    <div id="chartContainer" style="height: 40vh; border-style: none; margin: 0px -15px 0px -15px;"></div>
                 </div>
-                
-                
-                
+
+
+
             </div>
 
             <div class="row" style="height:45%; display: block;"><!--row 2-->
@@ -145,21 +148,28 @@
                             <div id="error" style="border-style: none">
                                 <h3>Errors</h3>
                                 <p id="errors"></p>
-                            </div>		
+                            </div>
                         </div>
 
                         <div class="col-sm-9"><!--column 2 - 5 spots-->
-                            <div class="row"> 
+                            <div class="row">
                                 <div class="col-sm-5" style="border-style: none"><!--column 1 - 4 spots | Motor speed-->
-                                    <div id="gauge" style="height:200px;border-style:none"></div>	
+                                    <div id="gauge" style="height:200px;border-style:none"></div>
                                 </div>
 
                                 <div class="col-sm-2" style="border-left-style: none;border-bottom-style: none;"><!--column 2 - 4 spots | battery-->
                                     <div id="batteryFill" style="height: 25vh; border-style: none; margin: 0px -15px 0px -15px;"></div>
                                 </div>
 
-                                <div class="col-sm-5" style="border-left-style: none;border-bottom-style: none;"><!--column 3 - 4 spots | damper-->
-                                    <h3>Damper</h3>
+                                <!--<div class="col-sm-5" style="border-left-style: none;border-bottom-style: none;">-->
+                                <!-- column 3 - 4 spots | damper-->
+                                <!--<<h3>Damper</h3>-->
+                                  <!--<</div>-->
+
+                                <div class="col-sm-5" style="border-left-style: none;border-bottom-style: none;"><!--column 3 - 4 spots | battery-->
+                                    <h3>Battery</h3>
+                                    <h2 id = "percentage" class="text-center"> 0% <h2>
+                                    <img id = "img" src="battery/battery_status0.png" height="200" width="200">
                                 </div>
                             </div>
 
@@ -170,15 +180,15 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-sm-6"><!--column 1 - 6 spots | heat map-->
                     <h3>Accumulator Temperature</h3>
                     <div id="heatMap" style="height: 40vh; width: 100%;border-style: none"></div>
-                </div>	
-                
+                </div>
+
             </div>
         </div>
-        
+
         <script src="guiFrontEnd.js"></script>
     </body>
 </html>

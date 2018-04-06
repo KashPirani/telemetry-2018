@@ -1,0 +1,41 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+h3
+{
+    color: black;
+}
+
+html
+{
+    box-sizing: border-box;
+}
+
+*, *:before, *:after
+{
+  box-sizing: inherit;
+}
+
+body, html, .container-fluid
+{
+    height: 100%;
+}
+
+.IMU
+{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.IMU_BALL
+{
+    position: relative;
+    top: 0px;
+    left: -92px;
+}

@@ -1,0 +1,445 @@
+
+v1020-wn-111-226:~ austinjiang$ cassandra -f
+
+v1020-wn-111-226:~ austinjiang$ cqlsh
+
+cqlsh> use personal_info; 
+
+cqlsh:personal_info> select * from info;
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      1 |       null |         5.7 |     1000 |       Jar |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+      4 |       null |         3.5 |     null |      Matt |        null
+      3 |       null |             |     1000 |    Austin |            
+
+(4 rows)
+
+
+cqlsh:personal_info> DELETE info_height FROM info where infoid = 3;
+
+cqlsh:personal_info> select * from info;
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      1 |       null |         5.7 |     1000 |       Jar |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+      4 |       null |         3.5 |     null |      Matt |        null
+      3 |       null |        null |     1000 |    Austin |            
+
+(4 rows)
+
+cqlsh:personal_info> DELETE info_weight FROM info where infoid = 3;
+
+cqlsh:personal_info> select * from info;
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      1 |       null |         5.7 |     1000 |       Jar |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+      4 |       null |         3.5 |     null |      Matt |        null
+      3 |       null |        null |     1000 |    Austin |        null
+
+(4 rows)
+cqlsh:personal_info> update info set birth_year = '1999' where infoid = 3;
+
+cqlsh:personal_info> select * from info;
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      1 |       null |         5.7 |     1000 |       Jar |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+      4 |       null |         3.5 |     null |      Matt |        null
+      3 |       1999 |        null |     1000 |    Austin |        null
+
+(4 rows)
+
+cqlsh:personal_info> update info set info_weight = '130' where infoid = 3;
+
+cqlsh:personal_info> select * from info;
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      1 |       null |         5.7 |     1000 |       Jar |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+      4 |       null |         3.5 |     null |      Matt |        null
+      3 |       1999 |        null |     1000 |    Austin |         130
+
+(4 rows)
+
+cqlsh:personal_info> select * from cars where id = 3;
+
+ id | make | model | year
+----+------+-------+------
+
+(0 rows)
+
+cqlsh:personal_info> select * from info where infoid = 3;
+
+ infoid | birth_year | info_height | info_iq | info_name | info_weight
+--------+------------+-------------+---------+-----------+-------------
+      3 |       1999 |        null |    1000 |    Austin |         130
+
+(1 rows)
+
+cqlsh:personal_info> select * from info where infoid = 4;
+
+ infoid | birth_year | info_height | info_iq | info_name | info_weight
+--------+------------+-------------+---------+-----------+-------------
+      4 |       null |         3.5 |    null |      Matt |        null
+
+(1 rows)
+
+cqlsh:personal_info> DELETE FROM info WHERE infoid = 4;
+
+cqlsh:personal_info> select * from info 
+                 ... ;
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      1 |       null |         5.7 |     1000 |       Jar |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+      3 |       1999 |        null |     1000 |    Austin |         130
+
+(3 rows)
+
+
+cqlsh:personal_info> insert into info(infoid, info_name, info_height) values (4, 'Matt', '3.5' ;
+
+cqlsh:personal_info> select * from info; 
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      1 |       null |         5.7 |     1000 |       Jar |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+      4 |       null |         3.5 |     null |      Matt |        null
+      3 |       1999 |        null |     1000 |    Austin |         130
+
+(4 rows)
+
+cqlsh:personal_info> DELETE FROM info WHERE infoid = 3;
+
+cqlsh:personal_info> select * from info;
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      1 |       null |         5.7 |     1000 |       Jar |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+      4 |       null |         3.5 |     null |      Matt |        null
+
+(3 rows)
+
+cqlsh:personal_info> DELETE FROM info WHERE infoid = 4;
+
+cqlsh:personal_info> select * from info;
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      1 |       null |         5.7 |     1000 |       Jar |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+
+(2 rows)
+cqlsh:personal_info> insert into info (infoid, info_name)
+                 ... values (3, 'Austin');
+cqlsh:personal_info> insert into info (infoid, info_name)
+                 ... values (4, 'Justin');
+cqlsh:personal_info> select * from info
+                 ... ;
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      1 |       null |         5.7 |     1000 |       Jar |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+      4 |       null |        null |     null |    Justin |        null
+      3 |       null |        null |     null |    Austin |        null
+
+(4 rows)
+
+cqlsh:personal_info> insert into info(infoid, birth_year) values (5, '1999');
+cqlsh:personal_info> select * from info;
+
+ infoid | birth_year | info_height | info_iq  | info_name | info_weight
+--------+------------+-------------+----------+-----------+-------------
+      5 |       1999 |        null |     null |      null |        null
+      1 |       null |         5.7 |     1000 |       Jar |         100
+      2 |       null |         1.2 | 12323131 |     James |         200
+      4 |       null |        null |     null |    Justin |        null
+      3 |       null |        null |     null |    Austin |        null
+
+(5 rows)
+
+cqlsh:personal_info> insert into info(infoid, info_iq)
+                 ... values (6, '1312312312');
+
+cqlsh:personal_info> select * from info
+                 ... ;
+
+ infoid | birth_year | info_height | info_iq    | info_name | info_weight
+--------+------------+-------------+------------+-----------+-------------
+      5 |       1999 |        null |       null |      null |        null
+      1 |       null |         5.7 |       1000 |       Jar |         100
+      2 |       null |         1.2 |   12323131 |     James |         200
+      4 |       null |        null |       null |    Justin |        null
+      6 |       null |        null | 1312312312 |      null |        null
+      3 |       null |        null |       null |    Austin |        null
+
+(6 rows)
+
+cqlsh:personal_info> select * from cars
+                 ... ;
+
+ id | make | model | year
+----+------+-------+------
+  1 |   MB |  S550 | 2008
+
+(1 rows)
+cqlsh:personal_info> select * from cars where id = 1;
+
+ id | make | model | year
+----+------+-------+------
+  1 |   MB |  S550 | 2008
+
+(1 rows)
+
+cqlsh:personal_info> select * from info where infoid = 5;
+
+ infoid | birth_year | info_height | info_iq | info_name | info_weight
+--------+------------+-------------+---------+-----------+-------------
+      5 |       1999 |        null |    null |      null |        null
+
+(1 rows)
+
+cqlsh:personal_info> describe tables;
+
+info  cars
+
+
+cqlsh> DESCRIBE keyspaces;
+
+system_schema  system  personal_info       test         
+system_auth    dev     system_distributed  system_traces
+
+cqlsh> create keyspace Powertrain
+   ... with replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+
+cqlsh> create keyspace Brakes
+   ... with replication = {'class': 'SimpleStrategy', 'replication_factor': 1};                      
+
+cqlsh> create keyspace Battery
+   ... with replication = {'class': 'SimpleStrategy', 'replication_factor': 1};                      
+
+cqlsh> DESCRIBE keyspaces;
+
+brakes   system_schema  system  powertrain     system_distributed  system_traces
+battery  system_auth    dev     personal_info  test              
+
+cqlsh> DROP KEYSPACE brakes;
+
+cqlsh> create keyspace Motor
+   ... with replication = {'class': 'SimpleStrategy', 'replication_factor': 1};                      
+
+cqlsh> describe keyspaces;
+
+battery        system      personal_info       test         
+system_schema  dev         motor               system_traces
+system_auth    powertrain  system_distributed
+
+cqlsh> use motor;
+
+cqlsh:motor> create table temperature(state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, temperature int, PRIMARY KEY((hour, minute, second, millisecond, microsecond), state));
+
+cqlsh:motor> select * from temperature;
+
+ hour | minute | second | millisecond | microsecond | state | date | temperature
+------+--------+--------+-------------+-------------+-------+------+-------------
+
+(0 rows)
+
+cqlsh:motor> create table cooling(state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, temperature_in int, temperature_out int, flow int, PRIMARY KEY((hour, minute, second, millisecond, microsecond), state));
+
+cqlsh:motor> select * from cooling;
+
+ hour | minute | second | millisecond | microsecond | state | date | flow | temperature_in | temperature_out
+------+--------+--------+-------------+-------------+-------+------+------+----------------+-----------------
+
+(0 rows)
+
+cqlsh:motor> create table encoders(state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, speed int, PRIMARY KEY((hour, minute, second, millisecond, microsecond), state));
+
+cqlsh:motor> select * from encoders;
+
+ hour | minute | second | millisecond | microsecond | state | date | speed
+------+--------+--------+-------------+-------------+-------+------+-------
+
+(0 rows)
+
+cqlsh:motor> describe tables;
+
+cooling  encoders  temperature
+
+cqlsh:motor> describe keyspaces;
+
+battery        system      personal_info       test         
+system_schema  dev         motor               system_traces
+system_auth    powertrain  system_distributed
+
+cqlsh:motor> use battery;
+
+cqlsh:battery> describe tables
+
+<empty>
+
+
+cqlsh:battery> create table cell_data
+           ... (id int, state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, temperature int, voltage int, PRIMARY KEY(id, state, hour, minute, second, millisecond, microsecond));
+
+cqlsh:battery> select * from cell_data;
+
+ id | state | hour | minute | second | millisecond | microsecond | date | temperature | voltage
+----+-------+------+--------+--------+-------------+-------------+------+-------------+---------
+
+(0 rows)
+
+cqlsh:battery> create table current
+           ... (state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, current int, PRIMARY KEY((hour, minute, second, millisecond, microsecond), state));
+
+cqlsh:battery> select * from current;
+
+ hour | minute | second | millisecond | microsecond | state | current | date
+------+--------+--------+-------------+-------------+-------+---------+------
+
+(0 rows)
+
+cqlsh:battery> create table HV_Bus_Voltage
+           ... (state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, voltage int, PRIMARY KEY((hour, minute, second, millisecond, microsecond), state));
+
+cqlsh:battery> select * from HV_Bus_Voltage
+           ... ;
+
+ hour | minute | second | millisecond | microsecond | state | date | voltage
+------+--------+--------+-------------+-------------+-------+------+---------
+
+(0 rows)
+
+cqlsh:battery> create table Cooling_Temperature
+           ... (state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, temperature_in int, temperature_out int, flow int, PRIMARY KEY((hour, minute, second, millisecond, microsecond), state)); 
+
+cqlsh:battery> select * from cooling_temperature;
+
+ hour | minute | second | millisecond | microsecond | state | date | flow | temperature_in | temperature_out
+------+--------+--------+-------------+-------------+-------+------+------+----------------+-----------------
+
+(0 rows)
+
+cqlsh:battery> create table ODS
+           ... (state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, distance int, PRIMARY KEY((hour, minute, second, millisecond, microsecond), state));
+
+cqlsh:battery> select * from ODS;
+
+ hour | minute | second | millisecond | microsecond | state | date | distance
+------+--------+--------+-------------+-------------+-------+------+----------
+
+(0 rows)
+
+cqlsh:battery> describe tables;
+
+current  cell_data  ods  hv_bus_voltage  cooling_temperature
+
+cqlsh:battery> create table IMU
+           ... (state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, acceleration int, PRIMARY KEY((hour, minute, second, millisecond, microsecond), state));
+
+cqlsh:battery> select * from imu;
+
+ hour | minute | second | millisecond | microsecond | state | acceleration | date
+------+--------+--------+-------------+-------------+-------+--------------+------
+
+(0 rows)
+
+cqlsh:battery> describe tables;
+
+ods  current  imu  cell_data  hv_bus_voltage  cooling_temperature
+
+cqlsh:battery> use powertrain;
+
+cqlsh:powertrain> create table tires
+              ... (id int, state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, temperature int, pressure int, PRIMARY KEY(id, state, hour, minute, second, millisecond, microsecond));
+
+cqlsh:powertrain> select * from tires;
+
+ id | state | hour | minute | second | millisecond | microsecond | date | pressure | temperature
+----+-------+------+--------+--------+-------------+-------------+------+----------+-------------
+
+(0 rows)
+
+cqlsh:powertrain> create table steering_wheel
+              ... (state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, position int, PRIMARY KEY(state, hour, minute, second, millisecond, microsecond));
+
+cqlsh:powertrain> select * from steering_wheel;
+
+ state | hour | minute | second | millisecond | microsecond | date | position
+-------+------+--------+--------+-------------+-------------+------+----------
+
+(0 rows)
+
+cqlsh:powertrain> create table suspension_force
+              ... (state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, force int, PRIMARY KEY(state, hour, minute, second, millisecond, microsecond));
+
+cqlsh:powertrain> select * from suspension_force;
+
+ state | hour | minute | second | millisecond | microsecond | date | force
+-------+------+--------+--------+-------------+-------------+------+-------
+
+(0 rows)
+
+cqlsh:powertrain> create table supply_current
+              ... (state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, value int, PRIMARY KEY(state, hour, minute, second, millisecond, microsecond)); 
+
+cqlsh:powertrain> select * from supply_current;
+
+ state | hour | minute | second | millisecond | microsecond | date | value
+-------+------+--------+--------+-------------+-------------+------+-------
+
+(0 rows)
+
+cqlsh:powertrain> create table brakes
+              ... (id int, state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, position int, pressure int, PRIMARY KEY(id, state, hour, minute, second, millisecond, microsecond));
+
+cqlsh:powertrain> select * from brakes;
+
+ id | state | hour | minute | second | millisecond | microsecond | date | position | pressure
+----+-------+------+--------+--------+-------------+-------------+------+----------+----------
+
+(0 rows)
+
+cqlsh:powertrain> create table throttle
+              ... (id int, state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, position int, PRIMARY KEY(id ,state, hour, minute, second, millisecond, microsecond));
+
+cqlsh:powertrain> select * from throttle;
+
+ id | state | hour | minute | second | millisecond | microsecond | date | position
+----+-------+------+--------+--------+-------------+-------------+------+----------
+
+(0 rows)
+
+cqlsh:powertrain> create table damper (id int, state varchar, date int, hour int, minute int, second int, millisecond int, microsecond int, position int, PRIMARY KEY(id ,state, hour, minute, second, millisecond, microsecond));
+
+cqlsh:powertrain> select * from damper;
+
+ id | state | hour | minute | second | millisecond | microsecond | date | position
+----+-------+------+--------+--------+-------------+-------------+------+----------
+
+(0 rows)
+
+cqlsh:powertrain> describe tables;
+
+throttle  steering_wheel  suspension_force  damper
+brakes    tires           supply_current  
+
+cqlsh:powertrain> describe keyspaces;
+
+battery        system      personal_info       test         
+system_schema  dev         motor               system_traces
+system_auth    powertrain  system_distributed
+
+
